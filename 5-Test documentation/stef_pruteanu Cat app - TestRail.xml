@@ -1,0 +1,124 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S25</id>
+	<name>Cat photo sharing app: EP, BVA</name>
+	<description>Homework Lesson 10.
+
+= minimum and maximum size of photos the users can upload to the system
+
+= minimum length of comments under photos, maximum length of comments under photos
+</description>
+	<sections>
+		<section>
+		<name>#REQ 1 - SQUARE ( Size of photos )</name>
+		<description>EP &amp; BVA explained in Google Docs
+________________________________________________________________________
+
+# For  any JPG and PNG image types, with the aspect ratio of 1:1:
+&amp;gt; The system accepts a width size within 320 min. and 1080 max. pixels.
+&amp;gt; The system accepts a height between 320 min. and 1080 max pixels.
+________________________________________________________________________
+
+**Assuming the system has the code for 1:1 ratio implemented and tested, here are the cases for each BV for file sizes**
+
+I derived 3 tests for the sake of system&apos;s response to alert users of their image size more clearly</description>
+						<cases>
+												<case>
+				<id>C83</id>
+				<title>TC#1 - Upload succesful</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references>REQ1</references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>**- System has permission to phone&apos;s built-in Gallery app;**
+**- Image &quot;Test1&quot; has 1:1 aspect ratio and the valid size of 1080x1080px;**</preconds>
+										<steps_separated><step>
+<index>1</index><content>- Navigate to **&quot;New post&quot;** menu
+Expected Result:
+- New post menu displays both options for **&quot;Take Photo&quot;** and **&quot;Upload from gallery&quot;**
+- Tap the **&quot;Upload from gallery&quot;** option
+Expected Result:
+- **&quot;Upload from gallery&quot;** displays the built-in Gallery app</content></step>
+<step>
+<index>2</index><content>- Choose the image **&quot;Test1&quot;**, from the phone&apos;s Gallery</content><expected>- Image **&quot;Test1&quot;** is loaded on the screen and **&quot;Submit&quot;** button is available</expected></step>
+<step>
+<index>3</index><content>- Tap the **&quot;Submit&quot;** button</content><expected>- User is redirected to **&quot;Feed&quot;** main page.
+
+- Image **&quot;Test1&quot;** is uploaded and posted succesfully on the feed</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C84</id>
+				<title>TC#2 - Upload failed, image is too small</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references>#REQ1</references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>**-System has permission to phone&apos;s built-in Gallery app;**
+**-Image &quot;Test2&quot; has 1:1 aspect ratio and the size of 319x319px;**
+
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>- Navigate to **&quot;New post&quot;** menu
+Expected Result:
+- New post menu displays both options for **&quot;Take Photo&quot;** and **&quot;Upload from gallery&quot;**
+- Tap the **&quot;Upload from gallery&quot;** option
+Expected Result:
+- **&quot;Upload from gallery&quot;** displays the built-in Gallery app</content></step>
+<step>
+<index>2</index><content>- Choose the image **&quot;Test2&quot;**, from the phone&apos;s Gallery</content><expected>- System returns an alert with the message 
+**&quot;Oops, image file is too small! Let&apos;s try another one?&quot;**
+
+- with the **&quot;OK&quot;** and **&quot;CANCEL&quot;** options.
+</expected></step>
+<step>
+<index>3</index><content>- Tap the **&quot;CANCEL&quot;** button.</content><expected>- User is redirected to **&quot;Feed&quot;** main page.
+- Image has not been uploaded.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C85</id>
+				<title>TC#3 - Upload failed, image is too large</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>**-System has permission to phone&apos;s built-in Gallery app;**
+**-Image &quot;Test3&quot; has 1:1 aspect ratio and the size of 1081x1081px;**
+</preconds>
+										<steps_separated><step>
+<index>1</index><content>- Navigate to **&quot;New post&quot;** menu
+Expected Result:
+- New post menu displays both options for **&quot;Take Photo&quot;** and **&quot;Upload from gallery&quot;**
+- Tap the **&quot;Upload from gallery&quot;** option
+Expected Result:
+- **&quot;Upload from gallery&quot;** displays the built-in Gallery app</content></step>
+<step>
+<index>2</index><content>Choose the image **&quot;Test3&quot;**, from the phone&apos;s Gallery</content><expected>- System returns an alert with the message
+**&quot;Oops, image file is too large! Let&apos;s try another one?&quot;**
+
+- with the **&quot;OK&quot;** and **&quot;CANCEL&quot;** options.</expected></step>
+<step>
+<index>3</index><content>- Tap the **&quot;CANCEL&quot;** button.</content><expected>- User is redirected to **&quot;Feed&quot;** main page.
+
+- Image has not been uploaded.
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+</suite>

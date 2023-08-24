@@ -1,0 +1,244 @@
+{
+	"id": "5eacaa3c-385c-490a-9f37-1f7c64f001e1",
+	"name": "L17 Mighty Beet - Stef",
+	"timestamp": "2023-08-17T19:54:57.105Z",
+	"collection_id": "29076406-103cd678-0f64-4d83-8a4f-7d1fcd4fdfcc",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 12,
+	"delay": 0,
+	"persist": true,
+	"status": "finished",
+	"startedAt": "2023-08-17T19:54:50.183Z",
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "ae01c623-8b86-4e27-a522-989b5948e330",
+			"name": "CREATE user 'Stefania | 27 | CT'",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+			"time": 1397,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"User Stefania received an ID.": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User Stefania received an ID.": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				1397
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"User Stefania received an ID.": true
+				}
+			]
+		},
+		{
+			"id": "f762a750-a078-44af-b381-3c19155520ba",
+			"name": "GET user 'Stefania' by ID",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=29efca6e-0146-473c-beec-dbfa858249c0",
+			"time": 646,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"Found user 'Stefania' by ID": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"Found user 'Stefania' by ID": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				646
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"Found user 'Stefania' by ID": true
+				}
+			]
+		},
+		{
+			"id": "bd1aded5-93cd-4b88-9b90-583b7dec4ebf",
+			"name": "EDIT user 'Stefania'",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+			"time": 2166,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"UPDATED - with new information: city, name, age": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"UPDATED - with new information: city, name, age": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				2166
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"UPDATED - with new information: city, name, age": true
+				}
+			]
+		},
+		{
+			"id": "6474560c-63b2-4ca4-81ed-bb633a376678",
+			"name": "GET user 'Stefania' after UPDATE",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=29efca6e-0146-473c-beec-dbfa858249c0",
+			"time": 516,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"User changed their Name - Age - City, successfully": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User changed their Name - Age - City, successfully": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				516
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"User changed their Name - Age - City, successfully": true
+				}
+			]
+		},
+		{
+			"id": "0c444b8d-a822-47df-9d25-a6c5395fb9ce",
+			"name": "DELETE user 'Stefania x'",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=29efca6e-0146-473c-beec-dbfa858249c0",
+			"time": 896,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"User has deleted their account": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User has deleted their account": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				896
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"User has deleted their account": true
+				}
+			]
+		},
+		{
+			"id": "aeef29d7-f571-44f3-9b98-a949042600fc",
+			"name": "GET user 'Stefania' by ID Copy",
+			"url": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id=29efca6e-0146-473c-beec-dbfa858249c0",
+			"time": 524,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {
+				"200 OK - API accepted the request": true,
+				"User was successfully deleted - not found": true
+			},
+			"testPassFailCounts": {
+				"200 OK - API accepted the request": {
+					"pass": 1,
+					"fail": 0
+				},
+				"User was successfully deleted - not found": {
+					"pass": 1,
+					"fail": 0
+				}
+			},
+			"times": [
+				524
+			],
+			"allTests": [
+				{
+					"200 OK - API accepted the request": true,
+					"User was successfully deleted - not found": true
+				}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 6145,
+	"collection": {
+		"requests": [
+			{
+				"id": "ae01c623-8b86-4e27-a522-989b5948e330",
+				"method": "POST"
+			},
+			{
+				"id": "f762a750-a078-44af-b381-3c19155520ba",
+				"method": "GET"
+			},
+			{
+				"id": "bd1aded5-93cd-4b88-9b90-583b7dec4ebf",
+				"method": "PUT"
+			},
+			{
+				"id": "6474560c-63b2-4ca4-81ed-bb633a376678",
+				"method": "GET"
+			},
+			{
+				"id": "0c444b8d-a822-47df-9d25-a6c5395fb9ce",
+				"method": "DELETE"
+			},
+			{
+				"id": "aeef29d7-f571-44f3-9b98-a949042600fc",
+				"method": "GET"
+			}
+		]
+	}
+}

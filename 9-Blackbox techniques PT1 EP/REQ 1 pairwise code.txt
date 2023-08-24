@@ -1,0 +1,28 @@
+#############################################################
+# Paste test factors here.
+# Check the documents for more details.
+# https://github.com/Microsoft/pict/blob/master/doc/pict.md
+#############################################################
+
+IMG:           JPG
+WIDTH:         319, 320, 321, 1079, 1080, 1081
+HEIGHT:        319, 320, 321, 1079, 1080, 1081
+> >: 
+SIZE:          OK, -
+
+RATIO:         1:1, .
+
+UPLOAD:        [ALLOWED], -
+
+IF 
+([WIDTH] >= 320 AND [HEIGHT] >= 320) AND ([WIDTH] <= 1080 AND [HEIGHT] <= 1080)
+THEN [SIZE] = "OK"
+ELSE [SIZE] = "-";
+
+IF ([WIDTH] = [HEIGHT])
+THEN [RATIO] = "1:1"
+ELSE [RATIO]  = ".";
+
+IF [SIZE] = "OK" AND [RATIO]= "1:1"
+THEN [UPLOAD] = "[ALLOWED]"
+ELSE [UPLOAD] = "-";

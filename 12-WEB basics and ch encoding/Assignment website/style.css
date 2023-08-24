@@ -1,0 +1,32 @@
+
+body {
+    background-color: black;
+    line-height: 50px;;
+}
+
+#center {
+position: absolute; left: 50%; top: 50%; transform: translate(-50%, 50%);
+text-align: center;
+
+}
+
+h1 {
+    font-family: 'Montserrat';
+    font-weight: 100;
+    color: aliceblue;
+    letter-spacing: 5px;
+}
+
+h3 {
+    font-family: 'Montserrat';
+    font-weight: 500;
+    color: white;
+    letter-spacing: 2px;
+}
+
+#browserver {
+    font-family:Verdana, Geneva, Tahoma, sans-serif;
+    color: white;
+    font-size:medium;
+    letter-spacing: 6px;
+}

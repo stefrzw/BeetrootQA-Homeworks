@@ -1,0 +1,437 @@
+{
+	"info": {
+		"_postman_id": "103cd678-0f64-4d83-8a4f-7d1fcd4fdfcc",
+		"name": "L17 Mighty Beet - Stef",
+		"description": "> _Create a collection of requests for each of the methods of the specified API__(using variables and at least 2 tests for each request) — so that the data from the web service response for one request is used in subsequent requests.__The collection must be launched via the Collection runner with positive passing of all tests._ \n  \n\n**— Variables  \n  \n. stefID :** Dynamically saved after CREATE method is used, stored for the next requests.\n\n**. NAME** , **AGE** , **CITY** \\[**v1**\\] : Initial data for testing a user account\n\n**. NAME** , **AGE** , **CITY** \\[**v2**\\] : Values are dynamically changed after PUT method is used\n\n**— NOTE:**_  \n\\*_Excluding the BUGs I've written in Google Docs, I set the tests to PASS for any status code and wrote scripts to check in-depth that the Body's response matches the Pre-Script data\n\n**— LINKS:**  \n[BUGs I found ](https://docs.google.com/document/d/1N39qIZUGTQTZn6eC627yE2dJVQffGXfR/edit?usp=drive_link&ouid=104639682454887302957&rtpof=true&sd=true) \\+ [Code snippets](https://docs.google.com/document/d/12DsxZR12av0sHQzFSPihkhf4XYjHJ-0MQ_eXFGEVZbo/edit?usp=drive_link)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29076406"
+	},
+	"item": [
+		{
+			"name": "CREATE user 'Stefania | 27 | CT'",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"NAME-v1\", \"Stefania\");\r",
+							"\r",
+							"pm.collectionVariables.set(\"AGE-v1\", 27);\r",
+							"\r",
+							"pm.collectionVariables.set(\"CITY-v1\",\"Constanta\");\r",
+							"\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Initial user - name:Stefania, 27, Constanta\r",
+							"\r",
+							"pm.test(\"User Stefania received an ID.\", function () {\r",
+							"// Saving dynamic ID to variable, for next requests\r",
+							"    var responseBody = pm.response.json();\r",
+							"    var id = responseBody.id;\r",
+							"    pm.collectionVariables.set(\"stefID\", id);\r",
+							"    pm.expect(pm.response.text(\"\")).to.include(\"Stefania\", id);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\" : \"{{NAME-v1}}\",\r\n    \"age\" : \"{{AGE-v1}}\",\r\n    \"gender\" : \"female\",\r\n    \"city\" : \"{{CITY-v1}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user 'Stefania' by ID",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Body includes the saved ID, from previous request assigned to name 'Stefania'\r",
+							"pm.test(\"Found user 'Stefania' by ID\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"stefID\"),\"Stefania\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id={{stefID}}",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{stefID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "EDIT user 'Stefania'",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Saving new name to variable NAME-v2\r",
+							"var responseBody = pm.response.json();\r",
+							"var name = responseBody.name;\r",
+							"pm.collectionVariables.set(\"NAME-v2\", name);\r",
+							"\r",
+							"// Saving new age to variable AGE-v2\r",
+							"var responseBody = pm.response.json();\r",
+							"var age = responseBody.age;\r",
+							"pm.collectionVariables.set(\"AGE-v2\", age);\r",
+							"\r",
+							"// Saving new city to variable AGE-v2\r",
+							"var responseBody = pm.response.json();\r",
+							"var city = responseBody.name;\r",
+							"pm.collectionVariables.set(\"CITY-v2\", city);\r",
+							"\r",
+							"pm.test(\"UPDATED - with new information: city, name, age\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(city,name,age);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\" : \"{{stefID}}\",\r\n    \"name\" : \"Stef {{$randomFirstName}}\",\r\n    \"age\" : 28,\r\n    \"gender\" : \"female\",\r\n    \"city\" : \"{{$randomCity}}\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user 'Stefania' after UPDATE",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Body includes the new info, from saved variables\r",
+							"pm.test(\"User changed their Name - Age - City, successfully\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(pm.collectionVariables.get(\"NAME-v2\",\"AGE-v2\",\"CITY-v2\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id={{stefID}}",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{stefID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "DELETE user 'Stefania x'",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Body includes the confirmation for deleting the user\r",
+							"pm.test(\"User has deleted their account\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"User is deleted\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id={{stefID}}",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{stefID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "GET user 'Stefania' by ID Copy",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"// Checking response\r",
+							"pm.test(\"200 OK - API accepted the request\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"// Body includes the message that the user is no longer existing\r",
+							"pm.test(\"User was successfully deleted - not found\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"No users found\");\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://em.staging.api.onereach.ai/http/1b3bebb7-e882-4f1e-a74b-ee381bfa69d6/users?id={{stefID}}",
+					"protocol": "https",
+					"host": [
+						"em",
+						"staging",
+						"api",
+						"onereach",
+						"ai"
+					],
+					"path": [
+						"http",
+						"1b3bebb7-e882-4f1e-a74b-ee381bfa69d6",
+						"users"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "{{stefID}}"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "NAME-v1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "AGE-v1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "CITY-v1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "stefID",
+			"value": ""
+		},
+		{
+			"key": "NAME-v2",
+			"value": ""
+		},
+		{
+			"key": "AGE-v2",
+			"value": ""
+		},
+		{
+			"key": "CITY-v2",
+			"value": ""
+		}
+	]
+}

@@ -1,0 +1,186 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S19</id>
+	<name>Elevator Control System</name>
+	<description>1)Floor numbers: 1 to 10 (inclusive).
+2)If the requested floor number is outside this range, the system displays an error message.
+3)If the requested floor number is within the valid range, the system moves the elevator to that floor.
+</description>
+	<sections>
+		<section>
+		<name>STATEMENTS / DECISIONS</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>STT # Floor number - calculations</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C58</id>
+				<title>Floor numbers - single digit valid</title>
+												<template>Test Case (Text)</template>
+																<type>Functional</type>
+																<priority>High</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps>- Enter only first digit from range 0-9</steps>
+										<expected>- Elevator display reads the entered digit
+- Elevator display waits 5 seconds for a second digit
+- Elevator display updates level number with first digit</expected>
+									</custom>
+							</case>
+															<case>
+				<id>C59</id>
+				<title>Floor numbers - double digit invalid range</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Enter first digit within the range (1,9)</content><expected>- Elevator display updates the first digit
+- Elevator display waits 5 seconds for second digit</expected></step>
+<step>
+<index>2</index><content>- Enter second digit within the range (1.9) in less than 5 seconds</content><expected>- Elevator display updates the second digit
+- Elevator display adds first digit to second digit
+- Elevator displays updates the level number with both digits
+- Elevator displays checks for level number &amp;amp;gt; 10
+- Elevator displays returns error for invalid number
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C60</id>
+				<title>Floor numbers - double digit valid for &apos;0&apos; first field</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds> </preconds>
+										<steps_separated><step>
+<index>1</index><content>- Enter first digit as &apos;0&apos;</content><expected>- Elevator display updates the first digit
+- Elevator display waits 5 seconds for second digit</expected></step>
+<step>
+<index>2</index><content>- Enter second digit within range (0-9) in less than 5 seconds</content><expected>- Elevator display updates the second digit
+
+- Elevator display updates the level number with both digits
+
+- Elevator display checks the level number &amp;amp;lt;10
+
+- Elevator display confirms both digits as valid level number
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C64</id>
+				<title>Floor numbers - double digit valid for &apos;1&apos; first field</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Enter first digit as &apos;1&apos;</content><expected>Elevator display updates the first digit
+Elevator display waits 5 seconds for second digit</expected></step>
+<step>
+<index>2</index><content>- Enter second digit as &apos;0&apos; in less than 5 seconds</content><expected>- Elevator display updates the second digit
+
+
+- Elevator displays updates the level number with both digits
+
+- Elevator display checks level number &amp;amp;gt;10
+
+- Elevator display confirms level number as valid
+
+
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>DEC # Floor levels - validation</name>
+		<description></description>
+						<cases>
+												<case>
+				<id>C55</id>
+				<title>Floor numbers - moving - valid level</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Check elevator&apos;s displayed floor number.</content><expected>- Elevator displays the current floor number as &quot;0&quot;.</expected></step>
+<step>
+<index>2</index><content>- Enter the floor number &apos;1&apos;.</content><expected>- Elevator confirms floor number with message &quot;GOING TO FLOOR 1&quot;
+- Elevator moves to floor &apos;1&apos;.</expected></step>
+<step>
+<index>3</index><content>- Check elevator&apos;s displayed floor number.</content><expected>- Elevator updates the current floor number as &quot;1&quot;.
+- Elevator remains still.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C56</id>
+				<title>Floor numbers - not moving - invalid level</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Check the displayed floor number</content><expected>- Elevator displays the current floor number as &quot;1&quot;.</expected></step>
+<step>
+<index>2</index><content>- Enter the floor number &apos;12&apos;.</content><expected>- Elevator displays the error &quot;INVALID LEVEL&quot; for 5 seconds.
+- Elevator display resets the floor number to current.
+- Elevator remains still.
+
+</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C57</id>
+				<title>Floor numbers - not moving - valid level</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate></estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Check the displayed floor number</content><expected>- Elevator displays the current floor number as &quot;1&quot;.</expected></step>
+<step>
+<index>2</index><content>- Enter the floor number &apos;1&apos;.</content><expected>- Elevator displays the error &quot;ALREADY ON CURRENT FLOOR&quot; for 5 seconds.
+- Resets displayed floor number to current
+- Elevator remains still.</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+	</sections>
+</suite>

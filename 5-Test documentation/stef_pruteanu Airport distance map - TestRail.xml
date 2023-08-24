@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<suite>
+	<id>S27</id>
+	<name>Airport Distance Map</name>
+	<description>** High Level Tests **
+
+________________________________________________________________________
+
+** 3x Low Level Tests **</description>
+	<sections>
+		<section>
+		<name>Airport Distance Map</name>
+		<description></description>
+										<sections>
+		<section>
+		<name>&gt; Airport Distance Checklist</name>
+		<description># Highlevel tests
+________________________________________________________________________</description>
+						<cases>
+												<case>
+				<id>C96</id>
+				<title>Functionality : Check if the distance between 2 airports is correct</title>
+												<template>Test Case (Text)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate>180</estimate>
+																								<references></references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds> - Have the Airport distance map App opened, from **link** : https://codepen.io/shshaw/pen/vJNMQY</preconds>
+										<steps>- Pick any 2 airports from the map, by settings both markers for each airport.
+</steps>
+										<expected>- Distance should show correctly</expected>
+									</custom>
+							</case>
+								</cases>
+							</section>
+			<section>
+		<name>&gt; Airport Distance Tests</name>
+		<description># Lowlevel tests
+________________________________________________________________________
+**Possible / Not possible** conditions are determined if the app shows the distance or not</description>
+						<cases>
+												<case>
+				<id>C104</id>
+				<title>TC1: Check if the flight from Georgia to Memphis is possible</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate>120</estimate>
+																								<references>C96 Check if the distance between 2 airports is correct</references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>- Have the Airport distance map App opened, from **link** : https://codepen.io/shshaw/pen/vJNMQY</preconds>
+										<steps_separated><step>
+<index>1</index><content>- Drag and drop the **1st** map&apos;s marker to **Georgia (GEG)**</content><expected>- The **1st** marker is set to Georgia displaying the **GEG** title</expected></step>
+<step>
+<index>2</index><content>- Drag and drop the **2nd** map&apos;s marker to **Memphis (MEM)**</content><expected>- The **2nd** marker is set to Memphis displaying the **MEM** title</expected></step>
+<step>
+<index>3</index><content>- Check if the **distance between the two markers is set to &apos;1,660mi&apos;**</content><expected>- Distance is displayed at the bottom of map with **&apos;1,660mi&apos;**</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C106</id>
+				<title>TC2: Check if the flight from Memphis to Georgia is possible</title>
+												<template>Test Case (Steps)</template>
+																<type>Other</type>
+																<priority>Medium</priority>
+																				<estimate>120</estimate>
+																								<references>C96 Check if the distance between 2 airports is correct</references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<preconds>- Have the Airport distance map App opened, from **link** : https://codepen.io/shshaw/pen/vJNMQY</preconds>
+										<steps_separated><step>
+<index>1</index><content>- Drag and drop the **1st** map&apos;s marker to **Memphis (MEM)**</content><expected>- The **1st** marker is set to Georgia displaying the **MEM** title</expected></step>
+<step>
+<index>2</index><content>- Drag and drop the **2nd** map&apos;s marker to **Georgia (GEG)**</content><expected>- The **2nd** marker is set to Memphis displaying the **GEG** title</expected></step>
+<step>
+<index>3</index><content>- Check if the **distance between the two markers is set to &apos;1,660mi&apos;**</content><expected>- Distance is displayed at the bottom of map with **&apos;1,660mi&apos;**</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+															<case>
+				<id>C105</id>
+				<title>TC3: Check if the flight is not possible from and to the same airport.</title>
+												<template>Test Case (Steps)</template>
+																<type>Functional</type>
+																<priority>Critical</priority>
+																				<estimate>120</estimate>
+																								<references>C96 Check if the distance between 2 airports is correct</references>
+																				<custom>
+										<automation_type><id>0</id><value> None</value></automation_type>
+										<steps_separated><step>
+<index>1</index><content>- Drag and drop the **1st** map&apos;s marker to **Georgia (GEG)**</content><expected>- The **1st** marker is set to Georgia displaying the **GEG** title</expected></step>
+<step>
+<index>2</index><content>- Drag and drop the **2nd** map&apos;s marker to **Georgia (GEG)**</content><expected>- The **2nd** marker is set to Memphis displaying the **Georgia (GEG)**</expected></step>
+<step>
+<index>3</index><content>- Check that, at the bottom of map, the **distance** is not displayed.</content><expected>- The **distance** is not displayed at the bottom of map</expected></step>
+</steps_separated>
+									</custom>
+							</case>
+								</cases>
+							</section>
+	</sections>
+			</section>
+	</sections>
+</suite>

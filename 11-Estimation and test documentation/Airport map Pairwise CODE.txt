@@ -1,0 +1,31 @@
+#############################################################
+# Paste test factors here.
+# Check the documents for more details.
+# https://github.com/Microsoft/pict/blob/master/doc/pict.md
+#############################################################
+
+FROM:
+
+M1:         0, 1.660
+
+TO:
+
+M2:         0, 1.660
+======= :
+
+AIRPORT:    GEG OR MEM, SAME AIRPORT
+========= :
+
+FLIGHT:     _, OK
+
+
+
+IF 
+([M1] = 0 AND [M2] = 1.660) OR ([M1] = 1.660 AND [M2] = 0) AND ([M1] <> [M2])
+THEN [AIRPORT] = "GEG OR MEM"
+ELSE [AIRPORT] = "SAME AIRPORT";
+
+IF ([M1] = 0 OR [M1] = 1.660) AND [AIRPORT] = "GEG OR MEM"
+THEN [FLIGHT] = "OK"
+ELSE [FLIGHT] = "_";
+
