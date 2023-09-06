@@ -1,0 +1,388 @@
+{
+  "id": "2027160c-9129-4051-80b5-0f095973a6fd",
+  "version": "2.0",
+  "name": "25-QA Automation basics - Beet seed",
+  "url": "https://www.saucedemo.com/",
+  "tests": [{
+    "id": "f79690ba-eb75-410d-b472-a481abbe64ed",
+    "name": "Check login page design",
+    "commands": [{
+      "id": "2b51d36c-7337-41e8-a540-d300d69c5018",
+      "comment": "Open login page",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "1cd6005a-ee9c-4611-80a8-875f820ddf12",
+      "comment": "Get page's URL",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "baseURL"
+    }, {
+      "id": "c9011aeb-7ca4-4034-a681-2aa31a70a2d9",
+      "comment": "URL correct for Login page",
+      "command": "assert",
+      "target": "baseURL",
+      "targets": [],
+      "value": "https://www.saucedemo.com/"
+    }, {
+      "id": "90e44e37-4b8b-437e-8850-cdecb299a90e",
+      "comment": "Login page's title displays 'Swag Labs'",
+      "command": "assertTitle",
+      "target": "Swag Labs",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "83d31b09-d93e-46b6-a574-0a9b9f6dd29e",
+      "comment": "Login logo displays correct text",
+      "command": "assertText",
+      "target": "css=.login_logo",
+      "targets": [],
+      "value": "Swag Labs"
+    }, {
+      "id": "52e63453-6ab0-48eb-a6a2-5c6ee9e4fdac",
+      "comment": "Get the background color",
+      "command": "executeScript",
+      "target": "return getComputedStyle(document.querySelector(\".login_container\")).backgroundColor",
+      "targets": [],
+      "value": "backgroundColor"
+    }, {
+      "id": "a23f6f42-cf99-488d-85aa-3f0b0270ac54",
+      "comment": "Background color set to correct rgb values",
+      "command": "assert",
+      "target": "backgroundColor",
+      "targets": [],
+      "value": "rgb(238, 252, 246)"
+    }, {
+      "id": "1b53f24e-9a28-439f-98b6-a98048f0021d",
+      "comment": "Username field is visible",
+      "command": "assertElementPresent",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "56b25d58-ad29-49b4-8dd6-5dc061697010",
+      "comment": "Password field is visible",
+      "command": "assertElementPresent",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "9a3a12a5-1f05-465c-9d16-c69846eb9534",
+      "comment": "Username field accepts text input with 'standard_user'",
+      "command": "type",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [
+        ["css=*[data-test=\"username\"]", "css:data-attr"],
+        ["id=user-name", "id"],
+        ["name=user-name", "name"],
+        ["css=#user-name", "css:finder"],
+        ["xpath=//input[@id='user-name']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "standard_user"
+    }, {
+      "id": "2e151303-d0cb-4693-be0e-ab91bab1feb7",
+      "comment": "Password field accepts text input with 'secret_sauce'",
+      "command": "type",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [
+        ["css=*[data-test=\"password\"]", "css:data-attr"],
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "secret_sauce"
+    }, {
+      "id": "ddc668d1-1e8f-42f5-a3ba-043fb2748bdc",
+      "comment": "Login button is visible",
+      "command": "assertElementPresent",
+      "target": "css=*[data-test=\"login-button\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "2861cb14-e18b-47fc-b374-1d5d506c74a1",
+      "comment": "Login page's footer is visible",
+      "command": "assertElementPresent",
+      "target": "css=#login_credentials",
+      "targets": [
+        ["id=login_credentials", "id"],
+        ["css=#login_credentials", "css:finder"],
+        ["xpath=//div[@id='login_credentials']", "xpath:attributes"],
+        ["xpath=//div[@id='root']/div/div[2]/div[2]/div/div", "xpath:idRelative"],
+        ["xpath=//div[2]/div[2]/div/div", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "f6e965f2-ee23-44c4-89ea-aa10f1f07e92",
+      "comment": "Footer title displays 'Accepted usernames are:'",
+      "command": "assertElementPresent",
+      "target": "xpath=//h4[contains(.,'Accepted usernames are:')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "f159fdec-026e-4ab7-b14d-977eb289dcf4",
+      "comment": "Footer displays the login credentials",
+      "command": "assertElementPresent",
+      "target": "css=#login_credentials",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "add49f67-24f9-45bd-bbd0-1213a6e8d9db",
+      "comment": "Title 'Accepted usernames are:' visible",
+      "command": "assertText",
+      "target": "xpath=//div[@class='login_credentials']/h4",
+      "targets": [],
+      "value": "Accepted usernames are:"
+    }, {
+      "id": "b22e7b48-aad6-4b55-a97d-95b20419d091",
+      "comment": "Title 'Password for all users:' visible",
+      "command": "assertText",
+      "target": "xpath=//div[@class='login_password']/h4",
+      "targets": [],
+      "value": "Password for all users:"
+    }]
+  }, {
+    "id": "d391210a-c215-4b9a-badc-8d2942e2a373",
+    "name": "Check login with negative scenarios",
+    "commands": [{
+      "id": "a696c3d0-d683-45b1-9a36-2b5c5d325b9b",
+      "comment": "Open login page",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e17f7f45-2c02-4030-8bed-ca669da37d9f",
+      "comment": "Empty field for username",
+      "command": "type",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e97e120a-ebd1-4a86-a559-7d830d94f13a",
+      "comment": "Empty field for password",
+      "command": "type",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "6bbda724-e7c4-49d4-bda5-cda4f63f1110",
+      "comment": "Login with empty fields",
+      "command": "click",
+      "target": "css=*[data-test=\"login-button\"]",
+      "targets": [
+        ["css=*[data-test=\"login-button\"]", "css:data-attr"],
+        ["id=login-button", "id"],
+        ["name=login-button", "name"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//input[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "b856daa5-84da-4223-a57a-db5178a86f58",
+      "comment": "Login fails for empty username with error message",
+      "command": "assertElementPresent",
+      "target": "xpath=//h3[contains(.,'Epic sadface: Username is required')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "cb3bdf49-404b-49e4-8514-d42851abe924",
+      "comment": "'standard_user' for username",
+      "command": "type",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [],
+      "value": "standard_user"
+    }, {
+      "id": "1d7c9576-fc7e-4be2-a109-0ea8cfad89d8",
+      "comment": "Empty field for password",
+      "command": "type",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "e4dd7469-16f0-4095-abb9-6e07b1ed4404",
+      "comment": "Login with empty password field",
+      "command": "click",
+      "target": "css=*[data-test=\"login-button\"]",
+      "targets": [
+        ["css=*[data-test=\"login-button\"]", "css:data-attr"],
+        ["id=login-button", "id"],
+        ["name=login-button", "name"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//input[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "933713c9-f36f-4145-a0e6-6fc352ebf62b",
+      "comment": "Login fails for empty password with error message",
+      "command": "assertElementPresent",
+      "target": "xpath=//h3[contains(.,'Epic sadface: Password is required')]",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "26a28af9-6ebe-4839-be8a-c039406a4489",
+      "comment": "'standard_user' for username",
+      "command": "type",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [],
+      "value": "standard_user"
+    }, {
+      "id": "4f220b26-b285-426e-869e-382564f46539",
+      "comment": "Wrong password",
+      "command": "type",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [],
+      "value": "anything"
+    }, {
+      "id": "aa18e71e-ab83-4513-a8fd-d683217a1927",
+      "comment": "Login with wrong password",
+      "command": "click",
+      "target": "css=*[data-test=\"login-button\"]",
+      "targets": [
+        ["css=*[data-test=\"login-button\"]", "css:data-attr"],
+        ["id=login-button", "id"],
+        ["name=login-button", "name"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//input[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "10875aa5-4707-4d83-b0d6-c43834dfd9cd",
+      "comment": "Login fails for wrong password with error message",
+      "command": "assertElementPresent",
+      "target": "xpath=//h3[contains(.,'Epic sadface: Username and password do not match any user in this service')]",
+      "targets": [],
+      "value": ""
+    }]
+  }, {
+    "id": "315964e7-1c29-4a39-b837-f40d56232d56",
+    "name": "Check login with positive scenario",
+    "commands": [{
+      "id": "3a0efe2f-b75f-4b9c-bf74-59bcd4ff36e1",
+      "comment": "Open login page",
+      "command": "open",
+      "target": "",
+      "targets": [],
+      "value": ""
+    }, {
+      "id": "5bb16730-f8c3-43b5-bcce-0cb5571e2b26",
+      "comment": "Click on the username field",
+      "command": "click",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [
+        ["css=*[data-test=\"username\"]", "css:data-attr"],
+        ["id=user-name", "id"],
+        ["name=user-name", "name"],
+        ["css=#user-name", "css:finder"],
+        ["xpath=//input[@id='user-name']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ae5a8108-92a4-4207-9cc2-1c28661f3ec4",
+      "comment": "Fill the username field with valid username from list",
+      "command": "type",
+      "target": "css=*[data-test=\"username\"]",
+      "targets": [
+        ["css=*[data-test=\"username\"]", "css:data-attr"],
+        ["id=user-name", "id"],
+        ["name=user-name", "name"],
+        ["css=#user-name", "css:finder"],
+        ["xpath=//input[@id='user-name']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div/input", "xpath:idRelative"],
+        ["xpath=//input", "xpath:position"]
+      ],
+      "value": "standard_user"
+    }, {
+      "id": "050c754e-4ca7-44e5-863b-6b66c1f7912a",
+      "comment": "Click on the password field",
+      "command": "click",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [
+        ["css=*[data-test=\"password\"]", "css:data-attr"],
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "0fe9c845-3e71-4946-bdb7-2ccd6f10550e",
+      "comment": "Fill in the password field with valid password from list",
+      "command": "type",
+      "target": "css=*[data-test=\"password\"]",
+      "targets": [
+        ["css=*[data-test=\"password\"]", "css:data-attr"],
+        ["id=password", "id"],
+        ["name=password", "name"],
+        ["css=#password", "css:finder"],
+        ["xpath=//input[@id='password']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/div[2]/input", "xpath:idRelative"],
+        ["xpath=//div[2]/input", "xpath:position"]
+      ],
+      "value": "secret_sauce"
+    }, {
+      "id": "6b7cd36f-4f43-44bf-86cd-8181cf24b855",
+      "comment": "Click on the login button",
+      "command": "click",
+      "target": "css=*[data-test=\"login-button\"]",
+      "targets": [
+        ["css=*[data-test=\"login-button\"]", "css:data-attr"],
+        ["id=login-button", "id"],
+        ["name=login-button", "name"],
+        ["css=#login-button", "css:finder"],
+        ["xpath=//input[@id='login-button']", "xpath:attributes"],
+        ["xpath=//div[@id='login_button_container']/div/form/input", "xpath:idRelative"],
+        ["xpath=//form/input", "xpath:position"]
+      ],
+      "value": ""
+    }, {
+      "id": "ee65898b-1edd-4b3c-95f1-95d69f5f3f5e",
+      "comment": "Follow Login redirect link",
+      "command": "executeScript",
+      "target": "return window.location.href",
+      "targets": [],
+      "value": "shopURL"
+    }, {
+      "id": "bef51975-11a2-44fa-9804-535b109bee1f",
+      "comment": "Check if succesful login redirects to shop URL",
+      "command": "assert",
+      "target": "shopURL",
+      "targets": [],
+      "value": "https://www.saucedemo.com/inventory.html"
+    }]
+  }],
+  "suites": [{
+    "id": "86f612fa-350f-4d41-9c28-8636d682d7ac",
+    "name": "GUI",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["f79690ba-eb75-410d-b472-a481abbe64ed"]
+  }, {
+    "id": "4e736f55-6694-48cd-9f19-c0323f82403a",
+    "name": "Functional : Login form",
+    "persistSession": false,
+    "parallel": false,
+    "timeout": 300,
+    "tests": ["d391210a-c215-4b9a-badc-8d2942e2a373", "315964e7-1c29-4a39-b837-f40d56232d56"]
+  }],
+  "urls": ["https://www.saucedemo.com/"],
+  "plugins": []
+}
